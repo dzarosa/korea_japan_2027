@@ -1,0 +1,35 @@
+/* Hierbei handelt es sich um eine Konfigurationsdatei für TypeScript, die speziell für Node.js-Projekte verwendet wird. 
+Doe Datei wird in der Regel von Root-tsconifg verwaltet und sorgt dafür, dass Vite und Node-Dateien korrekt geprüft werden.
+Wichtige Setting sind hier:
+  target und lib auf ES2023 sowie modul ESNext, um moderne JavaScript-Funktionen zu unterstützen.
+  mudleResolution mi dem Wert bundler und allowImportingTsExtensions auf true, um die Verwendung von TypeScript-Dateien mit Vite zu ermöglichen.
+  noEmit auf true, um die Ausgabe von JavaScript-Dateien zu verhindern, da Vite den Build-Prozess übernimmt.
+  strict auf true sowie nounusedLocals und noUnusedParameters auf true, um eine strenge Typprüfung zu gewährleisten.
+  include begrenzt die Prüfung außschließlich auf die Datei vite.config.ts, die für die Konfiguration von Vite verantwortlich ist.
+  */
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "ES2023",
+    "lib": [ "ES2023" ],
+    "module": "ESNext",
+    "types": [ "node" ],
+    "skipLibCheck": true,
+
+    /*Bundler mode*/
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /*Linting*/
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": ["vite.config.ts"]
+}

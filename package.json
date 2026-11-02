@@ -1,0 +1,25 @@
+/* Es geht hier um ein Vite-Projekt  mit TypeScript
+Die verfügbaren Skripte sind:
+- "dev": Startet den Entwicklungsserver
+- "build": Erstellt die Produktionsversion der Anwendung
+i - "preview": Startet einen lokalen Server, um die Produktionsversion zu testen
+Als Entwicklungsabhängigkeiten werden Vite, TypeScript und die entsprechenden Typdefinitionen benötigt. 
+  Die Konfiguration von Vite erfolgt in der Datei "vite.config.ts".
+ */
+{
+  "name": "korea-japan-reise"
+  "private": true
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vite": "^5.3.1"
+
+  }
+}

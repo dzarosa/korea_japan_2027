@@ -1,0 +1,38 @@
+/*TypeScript Konfigurationsdatei für die Anwendung (all Dateine in Ordner "src").
+  Diese Datei wird in der Regel von Root-tsconifg verwaltet und sorgt dafür, dass der Frontend-Code korrekt und umfassend geprüft wird.
+  Wichtige Setting sind hier:
+  target und lib auf ES2022 sowie DOM ermmöglichen moderne Syntax und den Zugriff auf die Browser-APIs.
+  type:"vite/client" stellt sicher, dass die Typen für Vite-spezifische Funktionen verfügbar sind.
+  moduleResolution mit dem Wert bundler und allowImportingTsExtensions auf true, um die Verwendung von TypeScript-Dateien mit Vite zu ermöglichen.
+  noEmit auf true beduete, dass TypeScript nur Typen prüft und Vite den Build-Prozess übernimmt.
+  strict auf true sowie nounusedLocals und noUnusedParameters auf true ermöglichen saubere Code und helfen , potenzielle Fehler frühzeitig zu erkennen.
+  include begrenzt die Prüfung auf den Ordner "src", in dem sich der gesamte Anwendungs-Code befindet.
+*/
+
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [ "ES2022", "DOM", "DOM.Iterable" ],
+    "module": "ESNext",
+    "types": [ "vite/client" ],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  },
+  "include": [ "src" ]
+}
