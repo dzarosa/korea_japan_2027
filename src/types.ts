@@ -19,7 +19,7 @@ export interface Session {
 // Status der Kostenpositionen (offen, bezahlt, Überweisung)
 export type ExpenseStatus = 'offen' | 'offen_überweisung' | 'bezahlt' | 'bezahlt_überweisung';
 
-/ Einzelne Ausgabe / Kostenposition
+// Einzelne Ausgabe / Kostenposition
 export interface Expense {
   desc: string;
   amount: number;
@@ -69,7 +69,8 @@ export type TransportMode =
   | 'walk'        // Gehen
   | 'metro'       // Metro / U-Bahn
   | 'bus'         // Bus
-  | 'train'       // Bahn / Shinkansen
+  | 'train'       // Bahn /
+  | 'shinkansen'  // Hochgeschwindigkeitszug
   | 'shuttle'     // Shuttle
   | 'car'         // Auto / Taxi
   | 'plane';      // Flug

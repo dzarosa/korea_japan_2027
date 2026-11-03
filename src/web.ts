@@ -5,3 +5,4 @@ import './actions';
 import './map';
 import './esa';
 import { autoSyncOnLoad } from './shared';
+void autoSyncOnLoad();

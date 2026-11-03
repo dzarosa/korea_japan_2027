@@ -4,7 +4,7 @@ Der Entwicklungsserver wird auf Port 3000 gestartet.
  */
 import { defineConfig } from 'vite';
 export default defineConfig({
-  base: './',
+  base: '/korea_japan_2027/',
   server: {
     port: 3000
   }

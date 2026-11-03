@@ -19,11 +19,8 @@ const MODE_COLORS: Record<TransportMode, string> = {
   bus: '#f39c12',
   shinkansen: '#e84393',
   plane: '#00cec9',
-  ferry: '#00b894',
-  cablecar: '#9b59b6',
-  monorail: '#6c5ce7',
   shuttle: '#636e72',
-  tram: '#00b894',
+
 };
 const MODE_LABELS: Record<TransportMode, string> = {
   walk: 'Fußweg',
@@ -33,11 +30,7 @@ const MODE_LABELS: Record<TransportMode, string> = {
   bus: 'Bus',
   shinkansen: 'Shinkansen',
   plane: 'Flug',
-  ferry: 'Fähre',
-  cablecar: 'Seilbahn',
-  monorail: 'Einschienenbahn',
   shuttle: 'Shuttle',
-  tram: 'Straßenbahn',
 };
 
 // Diverse Farben für die Ortstypen auf der Karte
