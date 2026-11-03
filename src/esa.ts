@@ -1,4 +1,4 @@
-mport { DAYS } from './route';
+import { DAYS } from './route';
 
 interface ItineraryDay {
   id: string;
