@@ -9,22 +9,22 @@ Hierbei handelt es sich um eine interaktive, responsive Website für eine zehnt�
 
 ## Funktionen
 **Reiseplanung und Karten:**
--Tagesübersicht: Hier sehen Sie die Reisetage mit dem jeweiligen Reiseziel, der Unterkunft und den geplanten Stationen.
--Routeninformationen: Dazu gehören Sehenswürdigkeiten, Weg Beschreibungen, Verkehrsmittel sowie ungefähre Entfernungen und Reisezeiten.
--Interaktive Karte: Anzeige mit Leaflet und Kartenmaterial von OpenStreetMap.
--Stadtauswahl: Die Schnellnavigation führt zu Seoul, Busan, Osaka und Tokio.
--Externe Navigation: Es gibt weiterführende Links zu Kakao Maps für südkoreanische Ziele und zu Google Maps für japanische Ziele.
--Besuchte Orte: Bereits besuchte Stationen können in der Verwaltungsoberfläche markiert werden.
--Reiseübersicht: Hier wird eine Zusammenfassung der Reisetage, Stationen und Routenabschnitte berechnet.
+- Tagesübersicht: Hier sehen Sie die Reisetage mit dem jeweiligen Reiseziel, der Unterkunft und den geplanten Stationen.
+- Routeninformationen: Dazu gehören Sehenswürdigkeiten, Weg Beschreibungen, Verkehrsmittel sowie ungefähre Entfernungen und Reisezeiten.
+- Interaktive Karte: Anzeige mit Leaflet und Kartenmaterial von OpenStreetMap.
+- Stadtauswahl: Die Schnellnavigation führt zu Seoul, Busan, Osaka und Tokio.
+- Externe Navigation: Es gibt weiterführende Links zu Kakao Maps für südkoreanische Ziele und zu Google Maps für japanische Ziele.
+- Besuchte Orte: Bereits besuchte Stationen können in der Verwaltungsoberfläche markiert werden.
+- Reiseübersicht: Hier wird eine Zusammenfassung der Reisetage, Stationen und Routenabschnitte berechnet.
 
 **Reisekostenabrechnung:**
--Hier können Sie Ausgaben und Überweisungen erfassen und verwalten.
--Einsehbar sind die Zahlungsstatus für offene, bezahlte und überweisungsbezogene Positionen.
--Ein Überblick über die individuellen Kosten und die Gruppenabrechnung ist ebenfalls möglich.
--Verschiedene Ansichten für Reiseteilnehmer und Administratoren.
--Die Speicherung der Daten erfolgt im Browser (localStorage).
--Mithilfe von JSON können Daten gespeichert und wiederhergestellt werden.
--Es gibt eine Anbindung an Google Apps Script/Google Drive zum manuellen Laden und Speichern von Kostendaten. Im Quellcode ist eine automatische Prüfung auf neuere Cloud-Daten vorgesehen.
+- Hier können Sie Ausgaben und Überweisungen erfassen und verwalten.
+- Einsehbar sind die Zahlungsstatus für offene, bezahlte und überweisungsbezogene Positionen.
+- Ein Überblick über die individuellen Kosten und die Gruppenabrechnung ist ebenfalls möglich.
+- Verschiedene Ansichten für Reiseteilnehmer und Administratoren.
+- Die Speicherung der Daten erfolgt im Browser (localStorage).
+- Mithilfe von JSON können Daten gespeichert und wiederhergestellt werden.
+- Es gibt eine Anbindung an Google Apps Script/Google Drive zum manuellen Laden und Speichern von Kostendaten. Im Quellcode ist eine automatische Prüfung auf neuere Cloud-Daten vorgesehen.
 
 ## Eingesetzte Technologien
 Technologie						Verwendung
@@ -107,20 +107,20 @@ Bei Veröffentlichung mit dem npm-Paket gh-pages kann das scripts-Objekt in pack
 Anschließend kann mit dem Befehl npm run deploy veröffentlicht werden. 
 
 ## ESA_01 – Technische Anforderungen:
--semantisches HTML mit den Elementen header, nav, main, footer, section, aside und article,
--Zugänglichkeitsattribute wie aria-label, beschriftete Schaltflächen und strukturierte Navigation.
+- semantisches HTML mit den Elementen header, nav, main, footer, section, aside und article,
+- Zugänglichkeitsattribute wie aria-label, beschriftete Schaltflächen und strukturierte Navigation.
 - Responsive Darstellung für unterschiedliche Bildschirmgrößen.
--TypeScript-Interfaces und typisierte Funktionen.
--Array-Verarbeitung, z. B. mit map() und reduce() zur Aufbereitung von Reisedaten.
+- TypeScript-Interfaces und typisierte Funktionen.
+- Array-Verarbeitung, z. B. mit map() und reduce() zur Aufbereitung von Reisedaten.
 
 ## Prüfungen
 **Für die Studienabgabe sind die unten stehenden Überprüfungen vorgesehen bzw. dokumentiert:**
--Lighthouse Accessibility der veröffentlichten Seite: **96/100 (Desktop, 03.11.2026)c
--Semantische HTML-Struktur und ARIA-Beschriftungen
--`npm run build` zur TypeScript- und Build-Prüfung
--Interaktive Karte, Tagesnavigation und Reiseübersicht
--Benutzer- und Adminansicht sowie Kosten- und Überweisungsfunktionen
--JSON-Export und -Import
+- Lighthouse Accessibility der veröffentlichten Seite: **96/100 (Desktop, 03.11.2026)c
+- Semantische HTML-Struktur und ARIA-Beschriftungen
+- `npm run build` zur TypeScript- und Build-Prüfung
+- Interaktive Karte, Tagesnavigation und Reiseübersicht
+- Benutzer- und Adminansicht sowie Kosten- und Überweisungsfunktionen
+- JSON-Export und -Import
 
 Der Accessibility-Wert erfüllt mit mindestens 80 Punkten die Vorgabe der ESA_01. Die Lighthouse-Werte können je nach Zeitpunkt des Tests, verwendetem Gerät und Testumgebung schwanken.
 **Screenshot:** lighthouse.png (/lighthouse.png)
