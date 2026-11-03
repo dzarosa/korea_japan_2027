@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de-AT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Korea &amp; Japan 2027 - Reiseplan &amp; Kostenabrechnung</title>
+  <meta name="description" content="Interaktiver Reiseplaner für Korea und Japan 2027 mit Tagesrouten, Karten und gemeinsamer Reisekostenabrechnung.">
+  <meta name="theme-color" content="#2c7873">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%232c7873'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='sans-serif' font-size='27' font-weight='700' fill='white'%3EKJ%3C/text%3E%3C/svg%3E">
+
+  <!-- Google Fonts laden nicht-renderblockierend; Systemfonts erscheinen sofort. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Instrument+Serif:ital@0;1&amp;display=swap"></noscript>
+  <script type="module" crossorigin src="/korea_japan_2027/assets/index-uRqjcoGJ.js"></script>
+  <link rel="stylesheet" crossorigin href="/korea_japan_2027/assets/index-BhZmNNKm.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Zwischen Hanok Village &amp; <em>Neonlichter</em></h1>
+    <section class="meta" aria-label="Reisezeiträume">
+      <p><strong>Korea:</strong> <time datetime="2027-08-17">17.08.2027</time>-<time datetime="2027-08-24">24.08.2027</time> · Ankunft 17.08. um 17:00 Uhr</p>
+      <p><strong>Japan:</strong> <time datetime="2027-08-26">26.08.2027</time>-<time datetime="2027-08-31">31.08.2027</time></p>
+    </section>
+  </header>
+
+  <nav class="timeline-wrap" aria-label="Reisetage und Kostenabrechnung">
+    <ul class="timeline" id="timeline">
+      <li><p>Reisetage werden geladen ...</p></li>
+    </ul>
+  </nav>
+
+  <main class="layout">
+    <aside class="sidebar" id="sidebar" aria-label="Details zum ausgewählten Reisebereich">
+      <p>Die Tagesplanung wird geladen ...</p>
+    </aside>
+
+    <section class="map-wrap" aria-labelledby="map-title">
+      <h2 class="sr-only" id="map-title">Interaktive Karte der Reiseroute</h2>
+      <section id="map" aria-label="Kartenansicht"></section>
+
+      <nav class="map-overlay" aria-label="Karte auf eine Stadt zentrieren">
+        <button type="button" onclick="flyTo(37.57,126.98,12)">Seoul</button>
+        <button type="button" onclick="flyTo(35.18,129.08,12)">Busan</button>
+        <button type="button" onclick="flyTo(34.67,135.50,12)">Osaka</button>
+        <button type="button" onclick="flyTo(35.68,139.76,11)">Tokio</button>
+      </nav>
+
+      <aside class="legend" aria-labelledby="legend-title">
+        <h3 class="sr-only" id="legend-title">Verkehrsmittel</h3>
+        <ul>
+          <li class="legend-item"><span class="legend-line legend-walk" aria-hidden="true"></span>Fußweg</li>
+          <li class="legend-item"><span class="legend-line legend-metro" aria-hidden="true"></span>U-Bahn</li>
+          <li class="legend-item"><span class="legend-line legend-train" aria-hidden="true"></span>Shinkansen / Bahn</li>
+          <li class="legend-item"><span class="legend-line legend-car" aria-hidden="true"></span>Auto / Taxi</li>
+          <li class="legend-item"><span class="legend-line legend-bus" aria-hidden="true"></span>Bus / Shuttle</li>
+          <li class="legend-item"><span class="legend-line legend-plane" aria-hidden="true"></span>Flug</li>
+        </ul>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="esa-footer">
+    <p>Korea &amp; Japan 2027 - Reiseplan &amp; Reisekostenabrechnung</p>
+    <button type="button" id="summary-toggle" aria-expanded="false" aria-controls="trip-summary" disabled>
+      Reiseübersicht anzeigen
+    </button>
+    <output id="trip-summary" aria-live="polite" hidden></output>
+  </footer>
+
+</body>
+</html>
