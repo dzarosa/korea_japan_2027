@@ -25,7 +25,21 @@
     --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-display: 'Instrument Serif', Georgia, serif;
 }
+/* Links im Fließtext besser erkennbar machen */
+main p a,
+main li a,
+footer p a {
+    color: #075985;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1.5px;
+}
 
+/* Sichtbarer Tastaturfokus */
+a:focus-visible {
+    outline: 3px solid #c2387b;
+    outline-offset: 3px;
+}
 *,
 *::before,
 *::after {
