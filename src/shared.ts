@@ -114,25 +114,105 @@ export function renderSyncStatus(): string {
 
 //GoogleDrive Synchronisation
 
+
+/**
+ * Daten über JSONP aus Google Apps Script laden.
+ * Vermeidet den CORS-Fehler beim direkten fetch().
+ * Nur für öffentliche Testdaten verwenden.
+ */
+function readCloudData(): Promise<unknown> {
+  return new Promise((resolve, reject) => {
+
+    const callback =
+      `cloudCb_${Date.now()}_${Math.random()
+        .toString(36).slice(2)}`;
+
+    const target = window as unknown as Record<
+      string,
+      unknown
+    >;
+
+    const script = document.createElement('script');
+
+    let completed = false;
+
+    const finish = (
+      error?: Error,
+      data?: unknown
+    ): void => {
+      if (completed) return;
+
+      completed = true;
+      window.clearTimeout(timeout);
+      script.remove();
+      delete target[callback];
+
+      if (error) {
+        reject(error);
+      } else {
+        resolve(data);
+      }
+    };
+
+    const timeout = window.setTimeout(() => {
+      finish(new Error(
+        'Zeitüberschreitung beim Laden von Google Apps Script.'
+      ));
+    }, 15000);
+
+    target[callback] = (data: unknown) => {
+      finish(undefined, data);
+    };
+
+    script.onerror = () => {
+      finish(new Error(
+        'Google Apps Script nicht erreichbar.'
+      ));
+    };
+
+    script.src =
+      `${GAS_URL}?callback=${encodeURIComponent(callback)}&t=${Date.now()}`;
+
+    document.head.appendChild(script);
+  });
+}
 /* Prüft beim Start, ob neuere Cloud-Daten vorhanden sind */
+
 export async function autoSyncOnLoad(): Promise<void> {
   try {
-    const response = await fetch(`${GAS_URL}?t=${Date.now()}`, { cache: 'no-store' });
-    if (!response.ok) return;
-    const cloudData = normaliseCostData(await response.json());
-    if (!Array.isArray(cloudData.expenses)) return;
+    const cloudData = normaliseCostData(
+      await readCloudData()
+    );
 
     const localData = getCostData();
-    if ((cloudData.lastModified ?? 0) <= (localData.lastModified ?? 0)) return;
 
-    const message = `Neuere Daten in Google Drive gefunden (von ${cloudData.modifiedBy ?? 'unbekannt'}).\n\nSollen die lokalen Daten aktualisiert werden?`;
+    if (
+      (cloudData.lastModified ?? 0) <=
+      (localData.lastModified ?? 0)
+    ) {
+      return;
+    }
+
+    const message =
+      'Neuere Daten in Google Drive gefunden.\n\n' +
+      'Sollen die lokalen Daten aktualisiert werden?';
+
     if (window.confirm(message)) {
       saveCostData(cloudData);
-      setSyncStatus({ lastSync: Date.now(), source: 'cloud' });
+
+      setSyncStatus({
+        lastSync: Date.now(),
+        source: 'cloud'
+      });
+
       location.reload();
     }
+
   } catch (error) {
-    console.info('Automatische Synchronisation nicht verfügbar.', error);
+    console.info(
+      'Automatische Synchronisation nicht verfügbar.',
+      error
+    );
   }
 }
 
@@ -183,45 +263,74 @@ export async function pushToCloud(): Promise<void> {
 }
 
 /* Lädt Daten aus GoogleDrive und bietet Ersetzen oder Zusammenführen an */
+
 export async function pullFromCloud(): Promise<void> {
-  const button = document.querySelector<HTMLButtonElement>('#sync-pull-btn');
+  const button =
+    document.querySelector<HTMLButtonElement>(
+      '#sync-pull-btn'
+    );
+
   if (button) {
     button.textContent = 'Lade ...';
     button.disabled = true;
   }
 
   try {
-    const response = await fetch(`${GAS_URL}?t=${Date.now()}`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const cloudData = normaliseCostData(await response.json());
+    const cloudData = normaliseCostData(
+      await readCloudData()
+    );
+
     const localData = getCostData();
+
     const cloudDate = cloudData.lastModified
-      ? new Date(cloudData.lastModified).toLocaleString('de-DE')
+      ? new Date(
+          cloudData.lastModified
+        ).toLocaleString('de-DE')
       : 'unbekannt';
 
     const replace = window.confirm(
       `Cloud-Daten vom ${cloudDate} laden?\n\n` +
-      `Cloud: ${cloudData.expenses.length} Kosten, ${cloudData.transfers.length} Überweisungen\n` +
-      `Lokal: ${localData.expenses.length} Kosten, ${localData.transfers.length} Überweisungen\n\n` +
-      'OK = Cloud ersetzt lokale Daten\nAbbrechen = beide Datenbestände zusammenführen',
+      `Cloud: ${cloudData.expenses.length} Kosten, ` +
+      `${cloudData.transfers.length} Überweisungen\n` +
+      `Lokal: ${localData.expenses.length} Kosten, ` +
+      `${localData.transfers.length} Überweisungen\n\n` +
+      'OK = Cloud ersetzt lokale Daten\n' +
+      'Abbrechen = Daten zusammenführen'
     );
 
     if (replace) {
       saveCostData(cloudData);
     } else {
       saveCostData({
-        expenses: mergeRecords(localData.expenses, cloudData.expenses, ['desc', 'amount', 'payer', 'date']),
-        transfers: mergeRecords(localData.transfers, cloudData.transfers, ['desc', 'amount', 'from', 'to', 'date']),
+        expenses: mergeRecords(
+          localData.expenses,
+          cloudData.expenses,
+          ['desc', 'amount', 'payer', 'date']
+        ),
+        transfers: mergeRecords(
+          localData.transfers,
+          cloudData.transfers,
+          ['desc', 'amount', 'from', 'to', 'date']
+        ),
         currency: cloudData.currency || localData.currency,
         lastModified: Date.now(),
-        modifiedBy: getSession().name ?? 'Unbekannt',
+        modifiedBy: getSession().name ?? 'Unbekannt'
       });
     }
 
-    setSyncStatus({ lastSync: Date.now(), source: 'cloud' });
+    setSyncStatus({
+      lastSync: Date.now(),
+      source: 'cloud'
+    });
+
     location.reload();
+
   } catch (error) {
-    window.alert(`Cloud-Daten konnten nicht geladen werden: ${errorMessage(error)}`);
+    window.alert(
+      'Cloud-Daten konnten nicht geladen werden: ' +
+      errorMessage(error)
+    );
+
   } finally {
     if (button) {
       button.textContent = 'Aus Google Drive laden';
@@ -229,7 +338,6 @@ export async function pullFromCloud(): Promise<void> {
     }
   }
 }
-
 /* Führt zwei Listen zusammen und vermeidet Duplikate */
 function mergeRecords<T extends object>(local: T[], cloud: T[], keys: (keyof T)[]): T[] {
   const result = [...local];
