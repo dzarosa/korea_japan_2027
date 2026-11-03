@@ -27,43 +27,45 @@ Hierbei handelt es sich um eine interaktive, responsive Website für eine zehnt�
 - Es gibt eine Anbindung an Google Apps Script/Google Drive zum manuellen Laden und Speichern von Kostendaten. Im Quellcode ist eine automatische Prüfung auf neuere Cloud-Daten vorgesehen.
 
 ## Eingesetzte Technologien
-Technologie						Verwendung
-HTML5							Semantische Seitenstruktur
-CSS3							Responsive Gestaltung und visuelle Darstellung
-TypeScript						Typisierte Anwendungslogik und Datenmodelle
-Vite							Entwicklungsserver und Produktions-Build
-Leaflet							Interaktive Kartendarstellung
-OpenStreetMap					Kartengrundlage
-Google Maps / Kakao Maps		Links zur externen Routen- und Zielnavigation
-Browser-`localStorage`			Lokale Speicherung von Reisekostendaten
-Google Apps Script				Optionale Cloud-Schnittstelle für Kostendaten
-GitHub Pages					Hosting der statischen Webanwendung
+| Technologie	| Verwendung |
+|---------------|------------|
+| HTML5			| Semantische Seitenstruktur |
+| CSS3			| Responsive Gestaltung und visuelle Darstellung |
+| TypeScript	| Typisierte Anwendungslogik und Datenmodelle |
+| Vite			| Entwicklungsserver und Produktions-Build |
+| Leaflet		| Interaktive Kartendarstellung |
+| OpenStreetMap	| Kartengrundlage |
+| Google Maps / Kakao Maps	| Links zur externen Routen- und Zielnavigation |
+| Browser-`localStorage`	| Lokale Speicherung von Reisekostendaten |
+| Google Apps Script		| Optionale Cloud-Schnittstelle für Kostendaten |
+| GitHub Pages				| Hosting der statischen Webanwendung |
 
 ## Projektstruktur
 
-index.html             		Semantisches HTML und optimiertes Schriftladen
-src/web.ts             		Zentraler Einstieg und Initialisierung
-src/types.ts           		Gemeinsame TypeScript-Datenmodelle
-src/route.ts           		Typisierte Reise- und Geodaten
-src/map.ts             		Karte, Tagesnavigation und Routendarstellung
-src/esa.ts             		Typisierte, interaktive Reisezusammenfassung
-src/shared.ts          		Speicherung, Berechnungen, Import/Export und Sync
-src/costs.ts           		Anmeldung und Kostenverwaltung
-src/actions.ts         		Validierung und Änderungen an Kosten/Überweisungen
-src/design.css         		Responsives Layout und konsolidiertes Design
-lighthouse.png         		Screenshot des Lighthouse-Audits
-lighthouse_bericht.html 	Gespeicherter Lighthouse-Bericht
-package.json          		npm-Skripte und Abhängigkeiten
-package-lock.json      		Festgelegte npm-Abhängigkeiten
-vite.config.ts         		Vite-Konfiguration für GitHub Pages
-tsconfig.json          		TypeScript-Hauptkonfiguration
-tsconfig.app.json      		TypeScript-Konfiguration der Anwendung
-tsconfig.node.json     		TypeScript-Konfiguration der Build-Umgebung
-reflexion_zarosa.pdf   		Kurze Projektdokumentation und Reflexion
-.gitignore             		Von Git ausgeschlossene Dateien
-.gitattributes         		Git-Dateiattribute
-README.md             		Projektdokumentation
-dist/                  		Generierter Produktionsbuild
+| index.html | Semantisches HTML und optimiertes Schriftladen |
+|------------|------------------------------------------------|
+| src/web.ts             		| Zentraler Einstieg und Initialisierung |
+| src/types.ts           		| Gemeinsame TypeScript-Datenmodelle |
+| src/route.ts           		| Typisierte Reise- und Geodaten |
+| src/map.ts             		| Karte, Tagesnavigation und Routendarstellung |
+| src/esa.ts             		| Typisierte, interaktive Reisezusammenfassung |
+| src/shared.ts          		| Speicherung, Berechnungen, Import/Export und Sync |
+| src/costs.ts           		| Anmeldung und Kostenverwaltung |
+| src/actions.ts         		| Validierung und Änderungen an Kosten/Überweisungen |
+| src/design.css         		| Responsives Layout und konsolidiertes Design |
+| lighthouse.png         		| Screenshot des Lighthouse-Audits |
+| lighthouse_bericht.html 	| Gespeicherter Lighthouse-Bericht |
+| package.json          		| npm-Skripte und Abhängigkeiten |
+| package-lock.json      		| Festgelegte npm-Abhängigkeiten |
+| vite.config.ts         		| Vite-Konfiguration für GitHub Pages |
+| tsconfig.json          		| TypeScript-Hauptkonfiguration |
+| tsconfig.app.json      		| TypeScript-Konfiguration der Anwendung |
+| tsconfig.node.json     		| TypeScript-Konfiguration der Build-Umgebung	|
+| reflexion_zarosa.pdf   		| Kurze Projektdokumentation und Reflexion |
+| .gitignore             		| Von Git ausgeschlossene Dateien |
+| .gitattributes         		| Git-Dateiattribute |
+| README.md             		| Projektdokumentation |
+| dist/                  		| Generierter Produktionsbuild |
 
 ## Installation und lokaler Start
 
