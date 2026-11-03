@@ -19,7 +19,7 @@ const COST_APP_KEY = 'dcw_costs_v6';
 const COST_SESSION_KEY = 'dcw_cost_session_v6';
 const VISITED_KEY = 'dcw_visited_v1';
 const SYNC_KEY = 'dcw_last_sync_v1';
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbzkD86SRv7vwLwfF9q_JoHpM9afSpBZzdwi64qI4h_U0v1qY4BIdeOBh2o4Ssx34F5W/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbz_fe4Xf5UXXzUpdV9TiSKSJriuXDU5spJi_17E9qWpNvrxjjhiDKG5_CzVqYdcp2znow/exec';
 
 type VisitedData = Record<string, boolean>;
 
