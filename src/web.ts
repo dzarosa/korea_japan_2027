@@ -1,6 +1,7 @@
+import 'leaflet/dist/leaflet.css';
 import './design.css';
-import './shared';
-import './route';
 import './costs';
+import './actions';
+import './map';
 import './esa';
-import './actions ';
+import { autoSyncOnLoad } from './shared';
